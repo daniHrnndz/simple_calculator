@@ -8,16 +8,17 @@
 :root {
     --light_color: #f2f2f2;
     --dark_color: #161616;
+    --background_color: #fff0b2
 }
 
 body {
-    background-color: #fff0b2;
+    background-color: var(--background_color);
 }
 
 
 .tittle {
     margin: auto;
-    padding: 1rem 0 1rem;
+    padding: 1rem 0 3rem;
     text-align: center;
     color: var(--dark_color);
 }
@@ -28,9 +29,16 @@ body {
     font-weight: 600;
 }
 
-
-.calc {
+.calc_wrap {
     background-color: #6f9bff;
+    border-radius: 4px;
+    width: max-content;
+    padding: 0 1.5rem;
+    margin: auto;
+
+
+}
+.calc {
     padding: 1rem 0 1.25rem;
     display: grid;
     justify-content: center;
@@ -48,7 +56,7 @@ body {
     box-shadow: 0 4px #5171BA;
     border-radius: 2px;
     cursor: pointer;
-    transition: 0.15s;
+    transition: 0.1s;
 }
 
 .calc_btn:hover {
@@ -105,11 +113,9 @@ body {
 }
 
 .footer_wrap {
-    border-top-left-radius: 60% 100%;
-    border-top-right-radius: 60% 100%;
     background-color: var(--dark_color);
     display: flex;
-    height: 6rem;
+    height: 4rem;
     justify-content: center;
     align-items: center;
 }
