@@ -1,7 +1,8 @@
 :root {
+    --background_color: #ffcd58;
     --light_color: #f2f2f2;
-    --dark_color: #161616;
-    --background_color: #fff0b2
+    --dark_color: #232323;
+    
 }
 
 * {
@@ -30,10 +31,10 @@ body {
 }
 
 .calc_wrap {
-    background-color: #6f9bff;
+    background-color: var(--light_color);
     border-radius: 4px;
     width: max-content;
-    padding: 0 1.5rem;
+    padding: 0 1.25rem;
     margin: auto;
 
 
@@ -44,19 +45,30 @@ body {
     justify-content: center;
     align-content: center;
     gap: 1.25rem 1rem;
-    color: var(--dark_color);
     grid-template-columns: repeat(4, 4rem);
-    grid-template-rows: minmax(4rem, auto) repeat(5, 4rem);
+    grid-template-rows: minmax(4rem, max-content) repeat(5, 4rem);
 
+}
+
+.calc_display {
+    grid-column: span 4;
+    display: flex;
+    text-align: right;
+    font-size: 2.5em;
+    word-wrap: break-word;
+    word-break: break-all;
+    color: var(--dark_color);
 }
 
 .calc_btn {
     border: none;
-    background-color: var(--light_color);
-    box-shadow: 0 4px #5171BA;
-    border-radius: 2px;
+    background-color: var(--background_color);
+    box-shadow: 0 4px var(--dark_color);
+    border-radius: 7px;
     cursor: pointer;
     transition: 0.1s;
+    font-weight: 700;
+    font-size: 0.8em;
 }
 
 .calc_btn:hover {
@@ -69,11 +81,11 @@ body {
 }
 
 .calc_btn-clear {
-    background-color: #ffa2a2;
+    background-color: #ff6161;
 }
 
 .calc_btn-clear:hover {
-    filter: brightness(90%);
+    filter: brightness(80%);
 }
 
 .calc_btn-0 {
@@ -84,38 +96,27 @@ body {
     grid-column: span 2;
 }
 
-.calc_display {
-    grid-column: span 4;
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    background-color: var(--light_color);
-    border-radius: 2px;
-    padding: 0.5rem 1rem;
-    font-size: 1.4rem;
-    word-break: break-all;
-    
-}
 
 .footer {
-    position: fixed;
+    position: relative;
     width: 100%;
     bottom: 0;
     align-self: center;
 }
 
 .footer_wrap {
-    background-color: var(--dark_color);
     display: flex;
     height: 4rem;
     justify-content: center;
     align-items: center;
+    padding-top: 1rem;
 }
 
 .footer_content {
-    padding: 0 3rem;
-    color: var(--light_color);
+    padding: 0 1.5rem;
+    color: var(--dark_color);
     font-weight: 600;
+    font-size: 1.2rem;
 
 }
 

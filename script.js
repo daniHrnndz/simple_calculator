@@ -4,33 +4,85 @@ const operandBtn = document.querySelectorAll("[data_operand]");
 const clearBtn = document.querySelector("[data_clear]");
 const equalBtn = document.querySelector("[data_equal]");
 
+var actualOp = " ";
+var previousOp = " ";
+var operation = undefined;
 
-console.log(calcDisplay);
-console.log(numberBtn);
-console.log(operandBtn);
-console.log(clearBtn);
-console.log(equalBtn);
-
-
-numberBtn.forEach(function(button){
-    button.addEventListener("click" , function(){
-        addNumber(button.innerText);
+numberBtn.forEach(button => {
+    button.addEventListener("click", () => {
+        addNumber(button.innerText)
     })
 });
 
-operandBtn.forEach(function(button){
-    button.addEventListener("click" , function(){
-        addOperation(button.innterText);
-        alert(button.innerText);
+operandBtn.forEach(button => {
+    button.addEventListener("click", () => {
+        opSelection(button.innerText)
+        addOperand(button.innerText)
     })
 });
 
-equalBtn.addEventListener("click" , function(){
-    calculate();
-    updateDisplay();
+clearBtn.addEventListener("click", () => {
+    clear()
+    updateDisplay()
 });
 
-clearBtn.addEventListener("click" , function(){
-    clearDisplay();
-    updateDisplay();
+equalBtn.addEventListener("click", () => {
+    calculate()
+    updateDisplay()
 });
+
+
+addNumber = (number) => {
+    actualOp = actualOp.toString() + number;
+    updateDisplay();
+}
+
+updateDisplay = () => {
+    calcDisplay.innerText = actualOp;
+}
+
+clear = () => {
+    actualOp = " ";
+    previousOp = " ";
+    operation = undefined
+}
+
+opSelection = (op) => {
+    if(actualOp === " ") return;
+    if(previousOp !== " ") {
+        calculate()
+    }
+    operation = op.toString();
+    previousOp = actualOp;
+    actualOp = " ";
+}
+
+calculate = () => {
+    var calculation;
+    const previous = parseFloat(previousOp);
+    const actual = parseFloat(actualOp);
+    if(isNaN(previous) || isNaN(actual)) return;
+    switch(operation){
+        case "+":
+            calculation = previous + actual;
+            break;
+        case "-":
+            calculation = previous - actual;
+            break;
+            
+        case "*":
+            calculation = previous * actual;
+            break;
+            
+        case "/":
+            calculation = previous / actual;
+            break;
+        default:
+            return;
+    }
+    actualOp = calculation;
+    operation = undefined;
+    previousOp = " ";
+}
+
+clear(); 
